@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5cb10rvdgbrl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6qwrs"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_right = 3
+border_color = Color(0.54902, 0.54902, 0.54902, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vrtrn"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_right = 4
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+
+[node name="bar" type="Panel"]
+modulate = Color(0.709804, 0.576471, 0.72549, 0.466667)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_6qwrs")
+
+[node name="v" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vrtrn")

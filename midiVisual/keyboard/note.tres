@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://bgmhfe5q6ttb8"]
+
+[ext_resource type="Shader" path="res://midiVisual/keyboard/white.gdshader" id="1_aie7m"]
+
+[sub_resource type="Gradient" id="Gradient_w5rmd"]
+offsets = PackedFloat32Array(0, 0.60177, 1)
+colors = PackedColorArray(0.2, 1, 0, 1, 0.81, 0.0405, 0.0405, 1, 0.3, 1, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8kjjk"]
+gradient = SubResource("Gradient_w5rmd")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_h4ddk"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_75lrx"]
+noise = SubResource("FastNoiseLite_h4ddk")
+
+[resource]
+shader = ExtResource("1_aie7m")
+shader_parameter/yMulti = null
+shader_parameter/show = false
+shader_parameter/showTime = 10.0
+shader_parameter/changer = 0.196
+shader_parameter/edgeColor = Color(0.945098, 0.176471, 0, 1)
+shader_parameter/edgeWidth = 0.3
+shader_parameter/noise = SubResource("NoiseTexture2D_75lrx")
+shader_parameter/edgeColorMap = SubResource("GradientTexture1D_8kjjk")

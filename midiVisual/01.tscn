@@ -1,0 +1,413 @@
+[gd_scene load_steps=21 format=3 uid="uid://cqnygkxegnxhi"]
+
+[ext_resource type="Script" path="res://midiVisual/01.gd" id="1_70slt"]
+[ext_resource type="Script" path="res://midiVisual/freqShow.gd" id="1_705ra"]
+[ext_resource type="Script" path="res://midiVisual/scence.gd" id="2_c6rbv"]
+[ext_resource type="Script" path="res://midiVisual/main.gd" id="2_ieton"]
+[ext_resource type="PackedScene" uid="uid://b5cb10rvdgbrl" path="res://midiVisual/bar.tscn" id="2_swg61"]
+[ext_resource type="Texture2D" uid="uid://ccv4lljyuxfw4" path="res://icon.svg" id="3_p168k"]
+[ext_resource type="PackedScene" uid="uid://b5imj4wmf2vc1" path="res://midiVisual/keyboard/12_key.tscn" id="4_qstmf"]
+[ext_resource type="Material" uid="uid://bgmhfe5q6ttb8" path="res://midiVisual/keyboard/note.tres" id="5_k0asf"]
+[ext_resource type="AudioStream" uid="uid://byvg06k7bmxda" path="res://res/midi/天衣无缝.ogg" id="6_4augb"]
+[ext_resource type="Script" path="res://midiVisual/Audio.gd" id="8_kryn6"]
+
+[sub_resource type="Gradient" id="Gradient_hs5wa"]
+colors = PackedColorArray(2.5, 2.5, 2.5, 1, 0.00392157, 0.00392157, 0.00392157, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gx438"]
+gradient = SubResource("Gradient_hs5wa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2tes0"]
+lifetime_randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 54.88
+particle_flag_disable_z = true
+direction = Vector3(1, 0.2, 0)
+spread = 31.73
+flatness = 1.0
+gravity = Vector3(0, 20, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 147.37
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_min = -500.2
+angle_max = 475.4
+scale_min = 0.05
+scale_max = 0.07
+color_ramp = SubResource("GradientTexture1D_gx438")
+hue_variation_min = -0.44
+hue_variation_max = 0.45
+
+[sub_resource type="Gradient" id="Gradient_t6py1"]
+colors = PackedColorArray(2.5, 2.5, 2.5, 1, 0.00392157, 0.00392157, 0.00392157, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yh534"]
+gradient = SubResource("Gradient_t6py1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_45n75"]
+lifetime_randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 54.88
+particle_flag_disable_z = true
+direction = Vector3(-1, 0.2, 0)
+spread = 31.73
+flatness = 1.0
+gravity = Vector3(0, 20, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 147.37
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_min = -500.2
+angle_max = 475.4
+scale_min = 0.05
+scale_max = 0.07
+color_ramp = SubResource("GradientTexture1D_yh534")
+hue_variation_min = -0.44
+hue_variation_max = 0.45
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6qwrs"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_right = 3
+border_color = Color(0.54902, 0.54902, 0.54902, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vrtrn"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_right = 4
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lij0f"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tuolx"]
+bg_color = Color(0, 0, 0, 0.67451)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="BG"]
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_2tes0")
+texture = ExtResource("3_p168k")
+lifetime = 10.0
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="BG"]
+position = Vector2(1148, 2)
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_45n75")
+texture = ExtResource("3_p168k")
+lifetime = 10.0
+
+[node name="freqShow" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_705ra")
+
+[node name="Stereo" type="Control" parent="freqShow"]
+modulate = Color(1, 1, 1, 0.380392)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 664.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="l" type="HBoxContainer" parent="freqShow/Stereo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="bar" type="Panel" parent="freqShow/Stereo/l"]
+modulate = Color(0.709804, 0.576471, 0.72549, 0.466667)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_6qwrs")
+
+[node name="v" type="Panel" parent="freqShow/Stereo/l/bar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vrtrn")
+
+[node name="bar2" parent="freqShow/Stereo/l" instance=ExtResource("2_swg61")]
+visible = false
+layout_mode = 2
+
+[node name="r" type="HBoxContainer" parent="freqShow/Stereo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="bar" type="Panel" parent="freqShow/Stereo/r"]
+modulate = Color(0.709804, 0.576471, 0.72549, 0.466667)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_6qwrs")
+
+[node name="v" type="Panel" parent="freqShow/Stereo/r/bar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vrtrn")
+
+[node name="01" type="Node2D" parent="."]
+script = ExtResource("1_70slt")
+
+[node name="main" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_ieton")
+metadata/_edit_group_ = true
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="main"]
+stream = ExtResource("6_4augb")
+volume_db = 7.924
+script = ExtResource("8_kryn6")
+
+[node name="scence" type="Control" parent="main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_c6rbv")
+
+[node name="track" type="Control" parent="main/scence"]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 0.813
+offset_bottom = -4.82404
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" type="Sprite2D" parent="main/scence/track"]
+scale = Vector2(0.90625, 0.382813)
+texture = ExtResource("3_p168k")
+
+[node name="note" type="Panel" parent="main/scence/track"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.007
+anchor_right = 0.079
+anchor_bottom = 0.331
+theme_override_styles/panel = SubResource("StyleBoxFlat_lij0f")
+
+[node name="Icon" type="Sprite2D" parent="main/scence/track/note"]
+visible = false
+modulate = Color(0.756863, 0, 0.219608, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_p168k")
+
+[node name="noteFX" type="Panel" parent="main/scence/track/note"]
+material = ExtResource("5_k0asf")
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.477
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -0.00800323
+offset_bottom = -0.127991
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lij0f")
+
+[node name="Icon" type="Sprite2D" parent="main/scence/track/note/noteFX"]
+visible = false
+modulate = Color(0.756863, 0, 0.219608, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_p168k")
+
+[node name="collisonLine" type="Panel" parent="main/scence"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -121.0
+offset_right = -5.0
+offset_bottom = -113.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="KeyBoard" type="HBoxContainer" parent="main"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.826
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.248047
+offset_right = -0.255981
+theme_override_constants/separation = 0
+
+[node name="C-1" parent="main/KeyBoard" instance=ExtResource("4_qstmf")]
+layout_mode = 2
+
+[node name="C0" parent="main/KeyBoard" instance=ExtResource("4_qstmf")]
+layout_mode = 2
+
+[node name="C1" parent="main/KeyBoard" instance=ExtResource("4_qstmf")]
+layout_mode = 2
+
+[node name="C2" parent="main/KeyBoard" instance=ExtResource("4_qstmf")]
+layout_mode = 2
+
+[node name="C3" parent="main/KeyBoard" instance=ExtResource("4_qstmf")]
+layout_mode = 2
+
+[node name="C4" parent="main/KeyBoard" instance=ExtResource("4_qstmf")]
+layout_mode = 2
+
+[node name="C5" parent="main/KeyBoard" instance=ExtResource("4_qstmf")]
+layout_mode = 2
+
+[node name="C6" parent="main/KeyBoard" instance=ExtResource("4_qstmf")]
+layout_mode = 2
+
+[node name="C7" parent="main/KeyBoard" instance=ExtResource("4_qstmf")]
+layout_mode = 2
+
+[node name="C8" parent="main/KeyBoard" instance=ExtResource("4_qstmf")]
+layout_mode = 2
+
+[node name="C9" parent="main/KeyBoard" instance=ExtResource("4_qstmf")]
+layout_mode = 2
+
+[node name="Timer" type="Timer" parent="main"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 342.0
+offset_top = 106.0
+offset_right = -64.0
+offset_bottom = 205.0
+theme_override_font_sizes/normal_font_size = 40
+text = "            godot可视化midi"
+metadata/_edit_group_ = true
+
+[node name="Panel" type="Panel" parent="RichTextLabel"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tuolx")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RichTextLabel"]
+modulate = Color(0.54902, 0.54902, 0.54902, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 2.94
+offset_left = -558.0
+offset_top = -371.0
+offset_right = 14.0
+offset_bottom = -694.62
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 20
+text = "                                        土法midi文件解析 :(
+                                        散装英语命名
+
+        不要写什么太复杂的控制器什么速度调节，
+        因为我没写怎么解析
+        已知fl studio 和reaper的midi可以用
+
+并没有midi播放功能，这是我在Daw里面渲染出来的音频
+音乐是 车万 的天衣无缝
+视频由godot渲染得出"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="RichTextLabel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 2.94
+offset_left = -745.0
+offset_top = -355.0
+offset_right = -47.0
+offset_bottom = -673.62
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 30
+text = "方便做音乐、节奏类
+
+
+
+
+
+
+想要特效、动画之类的再叠节点就行
+
+"
+
+[connection signal="timeout" from="main/Timer" to="main/scence" method="_on_timer_timeout"]

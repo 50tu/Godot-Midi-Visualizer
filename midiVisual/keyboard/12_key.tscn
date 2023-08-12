@@ -1,0 +1,83 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5imj4wmf2vc1"]
+
+[ext_resource type="PackedScene" uid="uid://ea2edkt10ft6" path="res://midiVisual/keyboard/white.tscn" id="1_blb7j"]
+[ext_resource type="PackedScene" uid="uid://cm07sqqqyipqx" path="res://midiVisual/keyboard/black.tscn" id="2_jwrdb"]
+
+[node name="12key" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="White" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="c" parent="White" instance=ExtResource("1_blb7j")]
+layout_mode = 2
+
+[node name="c2" parent="White" instance=ExtResource("1_blb7j")]
+layout_mode = 2
+
+[node name="c" parent="White/c2" instance=ExtResource("2_jwrdb")]
+layout_mode = 1
+anchor_bottom = 0.466
+grow_vertical = 1
+
+[node name="d" parent="White" instance=ExtResource("1_blb7j")]
+layout_mode = 2
+
+[node name="d2" parent="White" instance=ExtResource("1_blb7j")]
+layout_mode = 2
+
+[node name="c" parent="White/d2" instance=ExtResource("2_jwrdb")]
+layout_mode = 1
+anchor_bottom = 0.466
+offset_bottom = 0.0
+
+[node name="e" parent="White" instance=ExtResource("1_blb7j")]
+layout_mode = 2
+
+[node name="f" parent="White" instance=ExtResource("1_blb7j")]
+layout_mode = 2
+
+[node name="f2" parent="White" instance=ExtResource("1_blb7j")]
+layout_mode = 2
+
+[node name="c" parent="White/f2" instance=ExtResource("2_jwrdb")]
+layout_mode = 1
+anchor_bottom = 0.466
+offset_bottom = 0.0
+
+[node name="g" parent="White" instance=ExtResource("1_blb7j")]
+layout_mode = 2
+
+[node name="g2" parent="White" instance=ExtResource("1_blb7j")]
+layout_mode = 2
+
+[node name="c" parent="White/g2" instance=ExtResource("2_jwrdb")]
+layout_mode = 1
+anchor_bottom = 0.466
+offset_bottom = 0.0
+
+[node name="a" parent="White" instance=ExtResource("1_blb7j")]
+layout_mode = 2
+
+[node name="a2" parent="White" instance=ExtResource("1_blb7j")]
+layout_mode = 2
+
+[node name="c" parent="White/a2" instance=ExtResource("2_jwrdb")]
+layout_mode = 1
+anchor_bottom = 0.466
+offset_bottom = 0.0
+
+[node name="b" parent="White" instance=ExtResource("1_blb7j")]
+layout_mode = 2
